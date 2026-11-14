@@ -217,7 +217,7 @@
     const now = new Date();
     const dateOptions = { weekday: 'long', month: 'long', day: 'numeric' };
     document.getElementById('current-date-display').textContent =
-      "Today is " + now.toLocaleDateString('en-US', dateOptions);
+      "Today is " + now.toISOString().split('T');
 
     function switchView(view) {
       currentView = view;
