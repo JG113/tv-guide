@@ -1,143 +1,216 @@
-import urllib.request
 import json
+import urllib.request
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 
-# Mapping of TVmaze network names to Maine Veterans' Homes Channel Numbers
+# Force Eastern Time (Augusta, ME) even when running on cloud servers
+LOCAL_TZ = ZoneInfo("America/New_York")
+
+# SPECTRUM AUGUSTA, ME (04330) CHANNEL MAP
 CHANNEL_MAP = {
-    "ABC": "11-1",
-    "CBS": "11-6",
-    "FOX": "12-1",
-    "NBC": "12-6",
-    "The CW": "13-1",
-    "PBS": "13-6",
-    "ION": "23-1",
-    "ION Television": "23-1",
-    "MeTV": "23-2",
-    "NESN": "28-1",
-    "ESPN": "47-2",
-    "SEC Network": "48-3",
-    "FS1": "49-1",
-    "Pac-12 Network": "63-3",
-    "Big Ten Network": "66-1",
-    "ACC Network": "66-2",
-    "CBS Sports Network": "70-1",
-    "ESPNU": "74-2"
+    "NBC": "Ch. 12-6 (WCSH NBC)",
+    "ABC": "Ch. 11-1 (WMTW ABC)",
+    "PBS": "Ch. 13-6 (MPBN)",
+    "CBS": "Ch. 11-6 (WGME CBS)",
+    "FOX": "Ch. 12-1 (WPFO FOX)",
+    "ION": "Ch. 23-1 (ION)",
+    "MeTV": "Ch. 23-2 (MeTV)",
+
+    # Women's Basketball (UConn, UMaine, Duke)
+    "NESN": "Ch. 27 / 773 (NESN)",
+    "NESN+": "Ch. 326 (NESN+)",
+    "ESPN": "Ch. 24 / 730 (ESPN)",
+    "ESPN2": "Ch. 25 / 731 (ESPN2)",
+    "ESPNU": "Ch. 370 (ESPNU)",
+    "FS1": "Ch. 400 (FS1)",
+    "CBS Sports Network": "Ch. 315 (CBSSN)",
+    "ACCN": "Ch. 388 (ACC Network)",
+    "SNY": "Ch. 320 (SNY)",
+    "Peacock": "Peacock App",
+    "ESPN+": "ESPN+ App",
+
+    # Cable Channels for Blue Bloods, Chicago Fire & Detective Shows
+    "USA Network": "Ch. 21 / 718 (USA)",
+    "TNT": "Ch. 27 / 719 (TNT)",
+    "TBS": "Ch. 15 / 717 (TBS)",
+    "A&E": "Ch. 32 / 722 (A&E)",
+    "Paramount Network": "Ch. 23 (Paramount)",
+    "TV Land": "Ch. 54 (TV Land)",
+    "WE tv": "Ch. 68 (WE tv)",
+    "Oxygen": "Ch. 90 (Oxygen)",
+    "BBC America": "Ch. 110 (BBC America)",
+    "Investigation Discovery": "Ch. 138 (ID)",
+    "Start TV": "Ch. 155 (Start TV)",
+    "Pop": "Ch. 175 (Pop TV)",
+    "SundanceTV": "Ch. 628 (Sundance)",
+    "UPtv": "Ch. 124 (UPtv)"
 }
 
-# Exact shows and keywords tailored to his preferences
-FAVORITE_SHOWS = [
-    "blue bloods", "chicago fire", "columbo", "matlock", "perry mason",
-    "murder, she wrote", "ncis", "law & order", "csi", "criminal minds",
-    "hawaii five-0", "magnum", "monk", "psych", "fbi", "the rookie",
-    "walker", "in the heat of the night", "dragnet", "adam-12", "bones",
-    "cold case", "without a trace", "major crimes", "the closer"
+FAVORITE_SHOWS = {
+    "blue bloods": "BLUE BLOODS",
+    "chicago fire": "CHICAGO FIRE",
+    "law & order": "DETECTIVE",
+    "ncis": "DETECTIVE",
+    "fbi": "DETECTIVE",
+    "csi": "DETECTIVE",
+    "criminal minds": "DETECTIVE",
+    "the equalizer": "DETECTIVE",
+    "matlock": "DETECTIVE",
+    "elsbeth": "DETECTIVE",
+    "tracker": "DETECTIVE",
+    "will trent": "DETECTIVE",
+    "perry mason": "DETECTIVE",
+    "columbo": "DETECTIVE",
+    "monk": "DETECTIVE",
+    "murder, she wrote": "DETECTIVE",
+    "cold case": "DETECTIVE",
+    "bones": "DETECTIVE",
+    "major crimes": "DETECTIVE",
+    "the closer": "DETECTIVE",
+    "rizzoli & isles": "DETECTIVE"
+}
+
+FAVORITE_TEAMS = [
+    "uconn", "connecticut",
+    "maine", "black bears",
+    "duke", "blue devils"
 ]
 
-BASKETBALL_KEYWORDS = [
-    "women's basketball", "womens basketball", "ncaa women", "college basketball"
-]
+def fetch_json(url):
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        return json.loads(resp.read().decode("utf-8"))
 
-def is_match(show_name, summary, genres):
-    title_lower = (show_name or "").lower()
-    summary_lower = (summary or "").lower()
-    genres_lower = [g.lower() for g in (genres or [])]
+def format_channel(raw_name):
+    if not raw_name:
+        return "Check Spectrum Guide"
+    return CHANNEL_MAP.get(raw_name, raw_name)
 
-    # 1. Check specific favorite shows
-    for fav in FAVORITE_SHOWS:
-        if fav in title_lower:
-            return "Favorite Show"
+def get_tv_shows_for_week():
+    programs = []
+    today = datetime.now(LOCAL_TZ).date()
 
-    # 2. Check Women's College Basketball
-    if "basketball" in title_lower or "basketball" in summary_lower:
-        if any(kw in title_lower or kw in summary_lower for kw in BASKETBALL_KEYWORDS):
-            # Exclude men's-only listings if clearly labeled men's
-            if "men's" not in title_lower or "women's" in title_lower:
-                return "Women's Basketball"
-
-    # 3. Check general Detective / Crime dramas
-    if "crime" in genres_lower or "mystery" in genres_lower:
-        if any(word in summary_lower for word in ["detective", "investigat", "police", "murder", "precinct", "sheriff"]):
-            return "Detective Show"
-
-    return None
-
-def format_time(airstamp):
-    if not airstamp:
-        return "Time TBD"
-    dt = datetime.fromisoformat(airstamp)
-    return dt.strftime("%I:%M %p").lstrip("0")
-
-def fetch_weekly_guide():
-    today = datetime.now()
-    weekly_data = []
-
-    for i in range(7):
-        target_date = today + timedelta(days=i)
+    for offset in range(7):
+        target_date = today + timedelta(days=offset)
         date_str = target_date.strftime("%Y-%m-%d")
-        day_label = "TODAY" if i == 0 else ("TOMORROW" if i == 1 else target_date.strftime("%A, %b %d"))
-        
+        day_label = target_date.strftime("%A, %B %d")
+
         url = f"https://tvmaze.com{date_str}"
-        day_programs = []
-
         try:
-            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=15) as response:
-                episodes = json.loads(response.read().decode())
+            airings = fetch_json(url)
+        except Exception as e:
+            print(f"Error fetching TVMaze for {date_str}: {e}")
+            continue
 
-            for ep in episodes:
-                show = ep.get("show", {})
-                network = show.get("network")
-                if not network:
-                    continue
+        for item in airings:
+            show = item.get("show", {})
+            title = show.get("name", "")
+            title_lower = title.lower()
+            genres = [g.lower() for g in show.get("genres", [])]
+            summary = (show.get("summary") or "").lower()
 
-                net_name = network.get("name", "")
-                if net_name not in CHANNEL_MAP:
-                    continue
+            matched_category = None
+            for keyword, cat in FAVORITE_SHOWS.items():
+                if keyword in title_lower:
+                    matched_category = cat
+                    break
 
-                show_name = show.get("name", "")
-                summary = show.get("summary", "")
-                genres = show.get("genres", [])
-                category = is_match(show_name, summary, genres)
+            if not matched_category and ("crime" in genres or "mystery" in genres) and "detective" in summary:
+                matched_category = "DETECTIVE"
 
-                if category:
-                    airstamp = ep.get("airstamp", "")
-                    # Filter out overnight hours (1 AM to 6 AM) to keep the list simple
-                    if airstamp:
-                        hour = datetime.fromisoformat(airstamp).hour
-                        if 1 <= hour < 6:
-                            continue
+            if not matched_category:
+                continue
 
-                    day_programs.append({
-                        "time": format_time(airstamp),
-                        "sort_key": airstamp,
-                        "title": show_name,
-                        "episode": ep.get("name", ""),
-                        "network": net_name,
-                        "channel": CHANNEL_MAP[net_name],
-                        "category": category
-                    })
+            airstamp = item.get("airstamp")
+            runtime = item.get("runtime") or 60
+            if not airstamp:
+                continue
 
-            # Sort chronologically and remove duplicate back-to-back airings at same time
-            day_programs.sort(key=lambda x: x["sort_key"])
-            weekly_data.append({
-                "date": date_str,
-                "dayLabel": day_label,
-                "isToday": (i == 0),
-                "programs": day_programs
+            start_dt = datetime.fromisoformat(airstamp).astimezone(LOCAL_TZ)
+            end_dt = start_dt + timedelta(minutes=runtime)
+
+            network = (show.get("network") or show.get("webChannel") or {}).get("name", "")
+            ep_name = item.get("name", "")
+
+            programs.append({
+                "date": start_dt.strftime("%Y-%m-%d"),
+                "date_label": start_dt.strftime("%A, %B %d"),
+                "start_iso": start_dt.isoformat(),
+                "end_iso": end_dt.isoformat(),
+                "time_display": start_dt.strftime("%I:%M %p").lstrip("0"),
+                "channel": format_channel(network),
+                "title": title,
+                "subtitle": f"Episode: {ep_name}" if ep_name else "TV Series",
+                "category": matched_category
             })
 
+    return programs
+
+def get_womens_basketball_for_week():
+    games = []
+    today = datetime.now(LOCAL_TZ).date()
+
+    for offset in range(7):
+        target_date = today + timedelta(days=offset)
+        espn_date = target_date.strftime("%Y%m%d")
+
+        url = f"https://espn.com{espn_date}&limit=200"
+        try:
+            data = fetch_json(url)
         except Exception as e:
-            print(f"Error fetching {date_str}: {e}")
+            print(f"Error fetching ESPN for {espn_date}: {e}")
+            continue
+
+        for event in data.get("events", []):
+            name = event.get("name", "")
+            name_lower = name.lower()
+
+            if not any(team in name_lower for team in FAVORITE_TEAMS):
+                continue
+
+            event_date_iso = event.get("date", "")
+            try:
+                start_dt = datetime.fromisoformat(event_date_iso.replace("Z", "+00:00")).astimezone(LOCAL_TZ)
+            except Exception:
+                continue
+
+            end_dt = start_dt + timedelta(hours=2)
+
+            broadcasts = []
+            for comp in event.get("competitions", []):
+                for b in comp.get("broadcasts", []):
+                    broadcasts.extend(b.get("names", []))
+
+            raw_channel = broadcasts if broadcasts else "ESPN+ / Streaming"
+
+            games.append({
+                "date": start_dt.strftime("%Y-%m-%d"),
+                "date_label": start_dt.strftime("%A, %B %d"),
+                "start_iso": start_dt.isoformat(),
+                "end_iso": end_dt.isoformat(),
+                "time_display": start_dt.strftime("%I:%M %p").lstrip("0"),
+                "channel": format_channel(raw_channel),
+                "title": f"Women's Basketball: {name}",
+                "subtitle": "NCAA Division I Women's Basketball",
+                "category": "BASKETBALL"
+            })
+
+    return games
+
+def main():
+    all_items = get_womens_basketball_for_week() + get_tv_shows_for_week()
+    all_items.sort(key=lambda x: x["start_iso"])
 
     output = {
-        "lastUpdated": today.strftime("%A, %B %d at %I:%M %p"),
-        "days": weekly_data
+        "updated_at": datetime.now(LOCAL_TZ).isoformat(),
+        "programs": all_items
     }
 
-    # Save as a JS file so index.html works locally without needing a web server
-    with open("guide_data.js", "w", encoding="utf-8") as f:
-        f.write("window.TV_GUIDE_DATA = " + json.dumps(output, indent=2) + ";")
-    print("Successfully updated guide_data.js!")
+    with open("tv_guide.json", "w", encoding="utf-8") as f:
+        json.dump(output, f, indent=2)
+
+    print(f"Saved {len(all_items)} programs to tv_guide.json")
 
 if __name__ == "__main__":
-    fetch_weekly_guide()
+    main()
+
