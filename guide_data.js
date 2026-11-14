@@ -1,1 +1,291 @@
-
+{
+  "updated_at": "2026-11-13T21:13:37.627068-05:00",
+  "programs": [
+    {
+      "date": "2026-11-13",
+      "date_label": "Friday, November 13",
+      "start_iso": "2026-11-13T12:00:00-05:00",
+      "end_iso": "2026-11-13T16:00:00-05:00",
+      "time_display": "12:00 PM - 4:00 PM",
+      "channel": "Ch. 27 / 719 (TNT)",
+      "title": "Law & Order / Detective Reruns",
+      "subtitle": "Afternoon Crime Drama Block on TNT",
+      "category": "DETECTIVE"
+    },
+    {
+      "date": "2026-11-13",
+      "date_label": "Friday, November 13",
+      "start_iso": "2026-11-13T13:00:00-05:00",
+      "end_iso": "2026-11-13T16:00:00-05:00",
+      "time_display": "1:00 PM - 4:00 PM",
+      "channel": "Ch. 21 / 718 (USA)",
+      "title": "Chicago Fire (Afternoon Reruns)",
+      "subtitle": "Syndicated Episodes on USA Network",
+      "category": "CHICAGO FIRE"
+    },
+    {
+      "date": "2026-11-13",
+      "date_label": "Friday, November 13",
+      "start_iso": "2026-11-13T16:00:00-05:00",
+      "end_iso": "2026-11-13T19:00:00-05:00",
+      "time_display": "4:00 PM - 7:00 PM",
+      "channel": "Ch. 68 (WE tv)",
+      "title": "Blue Bloods (Afternoon Reruns)",
+      "subtitle": "Syndicated Episodes on WE tv",
+      "category": "BLUE BLOODS"
+    },
+    {
+      "date": "2026-11-13",
+      "date_label": "Friday, November 13",
+      "start_iso": "2026-11-13T19:00:00-05:00",
+      "end_iso": "2026-11-13T23:00:00-05:00",
+      "time_display": "7:00 PM - 11:00 PM",
+      "channel": "Ch. 17 / 35 (ION)",
+      "title": "Blue Bloods / NCIS / FBI Marathon",
+      "subtitle": "Prime Time Syndication on ION TV",
+      "category": "BLUE BLOODS"
+    },
+    {
+      "date": "2026-11-14",
+      "date_label": "Saturday, November 14",
+      "start_iso": "2026-11-14T13:00:00-05:00",
+      "end_iso": "2026-11-14T18:00:00-05:00",
+      "time_display": "1:00 PM - 6:00 PM",
+      "channel": "Ch. 17 / 35 (ION)",
+      "title": "Law & Order: SVU / Detective Marathon",
+      "subtitle": "Weekend Marathon on ION TV",
+      "category": "DETECTIVE"
+    },
+    {
+      "date": "2026-11-14",
+      "date_label": "Saturday, November 14",
+      "start_iso": "2026-11-14T14:00:00-05:00",
+      "end_iso": "2026-11-14T18:00:00-05:00",
+      "time_display": "2:00 PM - 6:00 PM",
+      "channel": "Ch. 21 / 718 (USA)",
+      "title": "Chicago Fire Weekend Block",
+      "subtitle": "Back-to-Back Episodes on USA Network",
+      "category": "CHICAGO FIRE"
+    },
+    {
+      "date": "2026-11-14",
+      "date_label": "Saturday, November 14",
+      "start_iso": "2026-11-14T18:00:00-05:00",
+      "end_iso": "2026-11-14T23:00:00-05:00",
+      "time_display": "6:00 PM - 11:00 PM",
+      "channel": "Ch. 68 (WE tv)",
+      "title": "Blue Bloods Evening Marathon",
+      "subtitle": "Weekend Episodes on WE tv",
+      "category": "BLUE BLOODS"
+    },
+    {
+      "date": "2026-11-15",
+      "date_label": "Sunday, November 15",
+      "start_iso": "2026-11-15T13:00:00-05:00",
+      "end_iso": "2026-11-15T18:00:00-05:00",
+      "time_display": "1:00 PM - 6:00 PM",
+      "channel": "Ch. 17 / 35 (ION)",
+      "title": "Law & Order: SVU / Detective Marathon",
+      "subtitle": "Weekend Marathon on ION TV",
+      "category": "DETECTIVE"
+    },
+    {
+      "date": "2026-11-15",
+      "date_label": "Sunday, November 15",
+      "start_iso": "2026-11-15T14:00:00-05:00",
+      "end_iso": "2026-11-15T18:00:00-05:00",
+      "time_display": "2:00 PM - 6:00 PM",
+      "channel": "Ch. 21 / 718 (USA)",
+      "title": "Chicago Fire Weekend Block",
+      "subtitle": "Back-to-Back Episodes on USA Network",
+      "category": "CHICAGO FIRE"
+    },
+    {
+      "date": "2026-11-15",
+      "date_label": "Sunday, November 15",
+      "start_iso": "2026-11-15T18:00:00-05:00",
+      "end_iso": "2026-11-15T23:00:00-05:00",
+      "time_display": "6:00 PM - 11:00 PM",
+      "channel": "Ch. 68 (WE tv)",
+      "title": "Blue Bloods Evening Marathon",
+      "subtitle": "Weekend Episodes on WE tv",
+      "category": "BLUE BLOODS"
+    },
+    {
+      "date": "2026-11-16",
+      "date_label": "Monday, November 16",
+      "start_iso": "2026-11-16T12:00:00-05:00",
+      "end_iso": "2026-11-16T16:00:00-05:00",
+      "time_display": "12:00 PM - 4:00 PM",
+      "channel": "Ch. 27 / 719 (TNT)",
+      "title": "Law & Order / Detective Reruns",
+      "subtitle": "Afternoon Crime Drama Block on TNT",
+      "category": "DETECTIVE"
+    },
+    {
+      "date": "2026-11-16",
+      "date_label": "Monday, November 16",
+      "start_iso": "2026-11-16T13:00:00-05:00",
+      "end_iso": "2026-11-16T16:00:00-05:00",
+      "time_display": "1:00 PM - 4:00 PM",
+      "channel": "Ch. 21 / 718 (USA)",
+      "title": "Chicago Fire (Afternoon Reruns)",
+      "subtitle": "Syndicated Episodes on USA Network",
+      "category": "CHICAGO FIRE"
+    },
+    {
+      "date": "2026-11-16",
+      "date_label": "Monday, November 16",
+      "start_iso": "2026-11-16T16:00:00-05:00",
+      "end_iso": "2026-11-16T19:00:00-05:00",
+      "time_display": "4:00 PM - 7:00 PM",
+      "channel": "Ch. 68 (WE tv)",
+      "title": "Blue Bloods (Afternoon Reruns)",
+      "subtitle": "Syndicated Episodes on WE tv",
+      "category": "BLUE BLOODS"
+    },
+    {
+      "date": "2026-11-16",
+      "date_label": "Monday, November 16",
+      "start_iso": "2026-11-16T19:00:00-05:00",
+      "end_iso": "2026-11-16T23:00:00-05:00",
+      "time_display": "7:00 PM - 11:00 PM",
+      "channel": "Ch. 17 / 35 (ION)",
+      "title": "Blue Bloods / NCIS / FBI Marathon",
+      "subtitle": "Prime Time Syndication on ION TV",
+      "category": "BLUE BLOODS"
+    },
+    {
+      "date": "2026-11-17",
+      "date_label": "Tuesday, November 17",
+      "start_iso": "2026-11-17T12:00:00-05:00",
+      "end_iso": "2026-11-17T16:00:00-05:00",
+      "time_display": "12:00 PM - 4:00 PM",
+      "channel": "Ch. 27 / 719 (TNT)",
+      "title": "Law & Order / Detective Reruns",
+      "subtitle": "Afternoon Crime Drama Block on TNT",
+      "category": "DETECTIVE"
+    },
+    {
+      "date": "2026-11-17",
+      "date_label": "Tuesday, November 17",
+      "start_iso": "2026-11-17T13:00:00-05:00",
+      "end_iso": "2026-11-17T16:00:00-05:00",
+      "time_display": "1:00 PM - 4:00 PM",
+      "channel": "Ch. 21 / 718 (USA)",
+      "title": "Chicago Fire (Afternoon Reruns)",
+      "subtitle": "Syndicated Episodes on USA Network",
+      "category": "CHICAGO FIRE"
+    },
+    {
+      "date": "2026-11-17",
+      "date_label": "Tuesday, November 17",
+      "start_iso": "2026-11-17T16:00:00-05:00",
+      "end_iso": "2026-11-17T19:00:00-05:00",
+      "time_display": "4:00 PM - 7:00 PM",
+      "channel": "Ch. 68 (WE tv)",
+      "title": "Blue Bloods (Afternoon Reruns)",
+      "subtitle": "Syndicated Episodes on WE tv",
+      "category": "BLUE BLOODS"
+    },
+    {
+      "date": "2026-11-17",
+      "date_label": "Tuesday, November 17",
+      "start_iso": "2026-11-17T19:00:00-05:00",
+      "end_iso": "2026-11-17T23:00:00-05:00",
+      "time_display": "7:00 PM - 11:00 PM",
+      "channel": "Ch. 17 / 35 (ION)",
+      "title": "Blue Bloods / NCIS / FBI Marathon",
+      "subtitle": "Prime Time Syndication on ION TV",
+      "category": "BLUE BLOODS"
+    },
+    {
+      "date": "2026-11-18",
+      "date_label": "Wednesday, November 18",
+      "start_iso": "2026-11-18T12:00:00-05:00",
+      "end_iso": "2026-11-18T16:00:00-05:00",
+      "time_display": "12:00 PM - 4:00 PM",
+      "channel": "Ch. 27 / 719 (TNT)",
+      "title": "Law & Order / Detective Reruns",
+      "subtitle": "Afternoon Crime Drama Block on TNT",
+      "category": "DETECTIVE"
+    },
+    {
+      "date": "2026-11-18",
+      "date_label": "Wednesday, November 18",
+      "start_iso": "2026-11-18T13:00:00-05:00",
+      "end_iso": "2026-11-18T16:00:00-05:00",
+      "time_display": "1:00 PM - 4:00 PM",
+      "channel": "Ch. 21 / 718 (USA)",
+      "title": "Chicago Fire (Afternoon Reruns)",
+      "subtitle": "Syndicated Episodes on USA Network",
+      "category": "CHICAGO FIRE"
+    },
+    {
+      "date": "2026-11-18",
+      "date_label": "Wednesday, November 18",
+      "start_iso": "2026-11-18T16:00:00-05:00",
+      "end_iso": "2026-11-18T19:00:00-05:00",
+      "time_display": "4:00 PM - 7:00 PM",
+      "channel": "Ch. 68 (WE tv)",
+      "title": "Blue Bloods (Afternoon Reruns)",
+      "subtitle": "Syndicated Episodes on WE tv",
+      "category": "BLUE BLOODS"
+    },
+    {
+      "date": "2026-11-18",
+      "date_label": "Wednesday, November 18",
+      "start_iso": "2026-11-18T19:00:00-05:00",
+      "end_iso": "2026-11-18T23:00:00-05:00",
+      "time_display": "7:00 PM - 11:00 PM",
+      "channel": "Ch. 17 / 35 (ION)",
+      "title": "Blue Bloods / NCIS / FBI Marathon",
+      "subtitle": "Prime Time Syndication on ION TV",
+      "category": "BLUE BLOODS"
+    },
+    {
+      "date": "2026-11-19",
+      "date_label": "Thursday, November 19",
+      "start_iso": "2026-11-19T12:00:00-05:00",
+      "end_iso": "2026-11-19T16:00:00-05:00",
+      "time_display": "12:00 PM - 4:00 PM",
+      "channel": "Ch. 27 / 719 (TNT)",
+      "title": "Law & Order / Detective Reruns",
+      "subtitle": "Afternoon Crime Drama Block on TNT",
+      "category": "DETECTIVE"
+    },
+    {
+      "date": "2026-11-19",
+      "date_label": "Thursday, November 19",
+      "start_iso": "2026-11-19T13:00:00-05:00",
+      "end_iso": "2026-11-19T16:00:00-05:00",
+      "time_display": "1:00 PM - 4:00 PM",
+      "channel": "Ch. 21 / 718 (USA)",
+      "title": "Chicago Fire (Afternoon Reruns)",
+      "subtitle": "Syndicated Episodes on USA Network",
+      "category": "CHICAGO FIRE"
+    },
+    {
+      "date": "2026-11-19",
+      "date_label": "Thursday, November 19",
+      "start_iso": "2026-11-19T16:00:00-05:00",
+      "end_iso": "2026-11-19T19:00:00-05:00",
+      "time_display": "4:00 PM - 7:00 PM",
+      "channel": "Ch. 68 (WE tv)",
+      "title": "Blue Bloods (Afternoon Reruns)",
+      "subtitle": "Syndicated Episodes on WE tv",
+      "category": "BLUE BLOODS"
+    },
+    {
+      "date": "2026-11-19",
+      "date_label": "Thursday, November 19",
+      "start_iso": "2026-11-19T19:00:00-05:00",
+      "end_iso": "2026-11-19T23:00:00-05:00",
+      "time_display": "7:00 PM - 11:00 PM",
+      "channel": "Ch. 17 / 35 (ION)",
+      "title": "Blue Bloods / NCIS / FBI Marathon",
+      "subtitle": "Prime Time Syndication on ION TV",
+      "category": "BLUE BLOODS"
+    }
+  ]
+}
