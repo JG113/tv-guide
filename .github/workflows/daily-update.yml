@@ -1,0 +1,32 @@
+name: Daily TV Guide Update
+
+on:
+  schedule:
+    # Runs automatically every morning at 5:30 AM EST / 6:30 AM EDT (10:30 UTC)
+    - cron: '30 10 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-guide:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate fresh 7-day TV guide
+        run: python update_guide.py
+
+      - name: Save updated tv_guide.json to GitHub
+        run: |
+          git config user.name "TV Guide Bot"
+          git config user.email "actions@github.com"
+          git add tv_guide.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Daily TV schedule update" && git push)
