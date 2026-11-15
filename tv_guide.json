@@ -1,39 +1,6 @@
 {
-  "updated_at": "2026-11-14T11:41:40.477276-05:00",
+  "updated_at": "2026-11-15T12:21:30.769103-05:00",
   "programs": [
-    {
-      "date": "2026-11-14",
-      "date_label": "Saturday, November 14",
-      "start_iso": "2026-11-14T13:00:00-05:00",
-      "end_iso": "2026-11-14T18:00:00-05:00",
-      "time_display": "1:00 PM - 6:00 PM",
-      "channel": "Ch. 17 / 35 (ION)",
-      "title": "Law & Order: SVU / Detective Marathon",
-      "subtitle": "Weekend Marathon on ION TV",
-      "category": "DETECTIVE"
-    },
-    {
-      "date": "2026-11-14",
-      "date_label": "Saturday, November 14",
-      "start_iso": "2026-11-14T14:00:00-05:00",
-      "end_iso": "2026-11-14T18:00:00-05:00",
-      "time_display": "2:00 PM - 6:00 PM",
-      "channel": "Ch. 21 / 718 (USA)",
-      "title": "Chicago Fire Weekend Block",
-      "subtitle": "Back-to-Back Episodes on USA Network",
-      "category": "CHICAGO FIRE"
-    },
-    {
-      "date": "2026-11-14",
-      "date_label": "Saturday, November 14",
-      "start_iso": "2026-11-14T18:00:00-05:00",
-      "end_iso": "2026-11-14T23:00:00-05:00",
-      "time_display": "6:00 PM - 11:00 PM",
-      "channel": "Ch. 68 (WE tv)",
-      "title": "Blue Bloods Evening Marathon",
-      "subtitle": "Weekend Episodes on WE tv",
-      "category": "BLUE BLOODS"
-    },
     {
       "date": "2026-11-15",
       "date_label": "Sunday, November 15",
@@ -285,6 +252,39 @@
       "channel": "Ch. 17 / 35 (ION)",
       "title": "Blue Bloods / NCIS / FBI Marathon",
       "subtitle": "Prime Time Syndication on ION TV",
+      "category": "BLUE BLOODS"
+    },
+    {
+      "date": "2026-11-21",
+      "date_label": "Saturday, November 21",
+      "start_iso": "2026-11-21T13:00:00-05:00",
+      "end_iso": "2026-11-21T18:00:00-05:00",
+      "time_display": "1:00 PM - 6:00 PM",
+      "channel": "Ch. 17 / 35 (ION)",
+      "title": "Law & Order: SVU / Detective Marathon",
+      "subtitle": "Weekend Marathon on ION TV",
+      "category": "DETECTIVE"
+    },
+    {
+      "date": "2026-11-21",
+      "date_label": "Saturday, November 21",
+      "start_iso": "2026-11-21T14:00:00-05:00",
+      "end_iso": "2026-11-21T18:00:00-05:00",
+      "time_display": "2:00 PM - 6:00 PM",
+      "channel": "Ch. 21 / 718 (USA)",
+      "title": "Chicago Fire Weekend Block",
+      "subtitle": "Back-to-Back Episodes on USA Network",
+      "category": "CHICAGO FIRE"
+    },
+    {
+      "date": "2026-11-21",
+      "date_label": "Saturday, November 21",
+      "start_iso": "2026-11-21T18:00:00-05:00",
+      "end_iso": "2026-11-21T23:00:00-05:00",
+      "time_display": "6:00 PM - 11:00 PM",
+      "channel": "Ch. 68 (WE tv)",
+      "title": "Blue Bloods Evening Marathon",
+      "subtitle": "Weekend Episodes on WE tv",
       "category": "BLUE BLOODS"
     }
   ]
