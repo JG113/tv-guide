@@ -141,8 +141,8 @@ def get_live_tv_shows_for_week():
                 programs.append({
                     "date": start_dt.strftime("%Y-%m-%d"),
                     "date_label": start_dt.strftime("%A, %B %d"),
-                    "start_iso": start_dt.isoformat(),
-                    "end_iso": end_dt.isoformat(),
+                    "start": start_dt.isoformat(),
+                    "end": end_dt.isoformat(),
                     "time_display": start_dt.strftime("%I:%M %p").lstrip("0"),
                     "channel": format_channel(network),
                     "title": title,
@@ -166,8 +166,8 @@ def get_syndicated_reruns_for_week():
                 programs.append({
                     "date": target_date.strftime("%Y-%m-%d"),
                     "date_label": target_date.strftime("%A, %B %d"),
-                    "start_iso": start_dt.isoformat(),
-                    "end_iso": end_dt.isoformat(),
+                    "start": start_dt.isoformat(),
+                    "end": end_dt.isoformat(),
                     "time_display": f"{start_str} - {end_str}",
                     "channel": block["channel"],
                     "title": block["title"],
@@ -212,8 +212,8 @@ def get_full_team_schedules_for_week():
             games.append({
                 "date": start_dt.strftime("%Y-%m-%d"),
                 "date_label": start_dt.strftime("%A, %B %d"),
-                "start_iso": start_dt.isoformat(),
-                "end_iso": end_dt.isoformat(),
+                "start": start_dt.isoformat(),
+                "end": end_dt.isoformat(),
                 "time_display": start_dt.strftime("%I:%M %p").lstrip("0"),
                 "channel": format_channel(raw_channel),
                 "title": f"Women's Basketball: {name}",
@@ -227,11 +227,11 @@ def main():
     unique_items = []
     seen_keys = set()
     for item in all_items:
-        key = (item["date"], item["start_iso"], item["title"])
+        key = (item["date"], item["start"], item["title"])
         if key not in seen_keys:
             seen_keys.add(key)
             unique_items.append(item)
-    unique_items.sort(key=lambda x: x["start_iso"])
+    unique_items.sort(key=lambda x: x["start"])
     output = {"updated_at": datetime.now(LOCAL_TZ).isoformat(), "programs": unique_items}
     with open("guide_data.json", "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2)
