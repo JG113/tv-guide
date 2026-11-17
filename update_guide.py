@@ -233,9 +233,9 @@ def main():
             unique_items.append(item)
     unique_items.sort(key=lambda x: x["start_iso"])
     output = {"updated_at": datetime.now(LOCAL_TZ).isoformat(), "programs": unique_items}
-    with open("tv_guide.json", "w", encoding="utf-8") as f:
+    with open("guide_data.json", "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2)
-    print(f"Saved {len(unique_items)} total programs to tv_guide.json")
+    print(f"Saved {len(unique_items)} total programs to guide_data.json")
 
 if __name__ == "__main__":
     main()
